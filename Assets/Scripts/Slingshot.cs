@@ -23,7 +23,7 @@ public class Slingshot : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) {
-            ballPrefab = Instantiate(configuration.BallPrefab).transform;
+            ballPrefab = Instantiate(configuration.BallPrefab).transform;  
         }
         if (Input.GetMouseButton(0)) {
             ballPosition = GetMousePositionInWorld();
@@ -33,7 +33,10 @@ public class Slingshot : MonoBehaviour
         if (Input.GetMouseButtonUp(0)) {
             Rigidbody rigidbody = ballPrefab.GetComponent<Rigidbody>();
             rigidbody.isKinematic = false;
-            rigidbody.linearVelocity = new Vector3(-ballPosition.x, ballPosition.y, -ballPosition.z) * configuration.velocityMulti;
+            Vector3 launchDirection = (launchPoint.position - ballPosition).normalized;
+            rigidbody.linearVelocity = launchDirection * configuration.velocityMulti;
+            FollowCam.POI = ballPrefab.gameObject;
+            ballPrefab = null;
 
         }
     }

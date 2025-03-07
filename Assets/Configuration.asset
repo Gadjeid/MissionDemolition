@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Configuration
   m_EditorClassIdentifier: 
   <Radius>k__BackingField: 4
-  <velocityMulti>k__BackingField: 10
+  <velocityMulti>k__BackingField: 30
   <BallPrefab>k__BackingField: {fileID: 2007729773294274987, guid: d2dd1cdeea05646458886b632b4f151d, type: 3}
